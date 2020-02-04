@@ -1,0 +1,12 @@
+{
+  "/api/*": {
+    "target": "https://htag.ddns.net",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/file/*": {
+    "target": "https://htag.ddns.net",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
