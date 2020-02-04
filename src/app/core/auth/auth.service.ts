@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map, tap, filter, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 export interface IUser {
   id: string;
@@ -49,7 +49,7 @@ export class AuthService {
    */
   isAuthenticated$ = this.profile$.pipe(map(profile => profile !== null));
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   /**
    * This function MUST be run once at the start of the aplication. Preferably in AppComponent.

@@ -10,6 +10,8 @@ import { CoreModule } from './core/core.module';
   imports: [
     // Angular Imports
     BrowserModule,
+
+    // Routing
     AppRoutingModule,
 
     // Core Module
