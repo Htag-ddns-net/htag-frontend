@@ -1,0 +1,92 @@
+.burger {
+  margin-left: -10px;
+  margin-right: 5px;
+}
+.sidenav-container {
+  height: 100%;
+}
+.sidenav {
+  width: 200px;
+}
+.sidenav .mat-list-item {
+  height: 40px !important;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.search {
+  width: 100%;
+  max-width: 400px;
+}
+
+.link-reset {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/*
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-content {
+  height: 100%;
+}
+
+.navbar {
+  max-height: 56px;
+  height: 56px;
+}
+
+
+
+.swipearea {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 10%;
+}
+
+.example-sidenav {
+  width: 80%;
+  padding-top: 20px;
+}
+
+.box {
+  display: block;
+  content: '';
+  width: 30%;
+  padding-top: 30%;
+  background-color: red;
+  margin: auto;
+}
+.username {
+  text-align: center;
+  margin: auto;
+}
+
+.listitem {
+  height: 30px !important;
+
+  /*&:hover {
+    background-color: red;
+  }*/
+/*}
+
+.menu-info {
+  position: relative;
+}
+
+.search {
+  width: 100%;
+}*/

@@ -1,0 +1,77 @@
+@import '../../../../../styles/breakpoints';
+
+//
+//
+//
+
+.container {
+  box-sizing: border-box;
+  padding: 5px;
+  margin-top: 5px;
+
+  // Sizing
+  width: 100%;
+  margin: auto;
+}
+
+.info {
+  // Sizing
+  width: 100%;
+
+  // Content
+  display: grid;
+  grid-gap: 5px;
+
+  grid-template-columns: 1fr;
+  @include adx-bp(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include adx-bp(md) {
+    grid-template-columns: 1fr 2fr;
+  }
+  @include adx-bp(lg) {
+    grid-template-columns: 1fr 3fr;
+  }
+  @include adx-bp(xl) {
+    grid-template-columns: 2fr 6fr;
+  }
+
+  .title {
+    margin-bottom: 0px;
+  }
+  .alt-title {
+    margin-bottom: 16px;
+  }
+
+  & > div > h4 {
+    margin: 0px;
+  }
+  & > div > h5 {
+    margin-top: 20px;
+  }
+
+  // Children
+  & > * {
+    width: 100%;
+  }
+}
+
+.pages {
+  // Sizing
+  width: 100%;
+  margin-top: 5px;
+
+  // Content
+  display: grid;
+  grid-gap: 5px;
+
+  grid-template-columns: 1fr;
+  @include adx-bp(sm) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  // Children
+  .page {
+    width: 100%;
+  }
+}

@@ -1,0 +1,4 @@
+<div *ngIf="auth.profile$ | async as profile">
+  Username: {{ profile.username }}<br />
+  Created: {{ profile.createdAt | agoTime }}<br />
+</div>

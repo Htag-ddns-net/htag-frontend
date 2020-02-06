@@ -1,0 +1,70 @@
+@import '~@angular/material/theming';
+@import '../../../../../styles/breakpoints';
+
+.content {
+  max-width: map-get($adx-sizes, xl);
+  margin: auto;
+}
+
+.manga-list {
+  box-sizing: border-box;
+  width: 100%;
+
+  display: grid;
+  justify-content: center;
+
+  grid-template-columns: repeat(1, 1fr);
+  @include adx-bp(xs) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include adx-bp(sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include adx-bp(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include adx-bp(lg) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  grid-gap: 5px;
+  padding: 5px;
+
+  .manga {
+    // grid-column: 1fr;
+
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+
+    background-color: grey;
+    padding: 2px;
+
+    color: inherit;
+    text-decoration: none;
+
+    .container {
+      position: relative;
+      box-sizing: border-box;
+
+      height: 100%;
+      padding-bottom: 20px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .title {
+        position: absolute;
+        bottom: 0px;
+
+        text-align: center;
+        width: calc(100% - 20px);
+        left: 10px;
+        @include mat-truncate-line();
+      }
+    }
+  }
+}

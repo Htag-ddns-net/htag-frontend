@@ -1,0 +1,10 @@
+<div class="content">
+  <div class="manga-list">
+    <a *ngFor="let manga of mangas" [routerLink]="'/manga/' + manga.id" class="manga">
+      <div class="container">
+        <img [src]="manga.coverUrl" />
+        <div class="title">{{ manga.title }}</div>
+      </div>
+    </a>
+  </div>
+</div>

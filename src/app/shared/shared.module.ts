@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AgoTimePipe } from './pipes/ago-time.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [AgoTimePipe],
   imports: [
     // Angular Imports
     CommonModule,
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
   exports: [
     // Angular Imports
     CommonModule,
+    AgoTimePipe,
   ],
 })
 export class SharedModule {}

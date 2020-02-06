@@ -1,0 +1,42 @@
+<div class="container" *ngIf="manga$ | async as manga">
+  <div class="info">
+    <img class="cover" [src]="manga.coverUrl" width="400px" />
+    <div>
+      <h2 class="title mat-h2">
+        <b>{{ manga.title }}</b>
+      </h2>
+      <h3 class="alt-title mat-h3"></h3>
+
+      <h4 class="uploaded mat-h4"><b>Parodies: </b> <span>tag1 tag2 tag3</span></h4>
+      <h4 class="uploaded mat-h4"><b>Characters: </b> <span>tag1 tag2 tag3</span></h4>
+      <h4 class="uploaded mat-h4"><b>Tags: </b> <span>tag1 tag2 tag3 tag4</span></h4>
+      <h4 class="uploaded mat-h4"><b>Artists: </b> <span>tag1 tag2 tag3</span></h4>
+      <h4 class="uploaded mat-h4"><b>Group: </b> <span>tag1 tag2 tag3</span></h4>
+
+      <ng-container *ngIf="auth.isAuthenticated$ | async">
+        Favorite:
+        <button mat-icon-button (click)="favorite(manga, !manga.favorite)">
+          <mat-icon>{{ manga.favorite ? 'favorite_border' : 'favorite' }}</mat-icon>
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="(auth.profile$ | async)?.id === manga.owner">
+        Edit:
+        <button mat-icon-button routerLink="./edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </ng-container>
+
+      <h5 class="uploaded mat-h5">
+        Uploaded: <span>{{ manga.createdAt | agoTime }}</span> <br />
+        Updated: <span>{{ manga.updatedAt | agoTime }}</span>
+      </h5>
+    </div>
+  </div>
+
+  <div class="pages">
+    <a *ngFor="let page of manga.pageURLs; let i = index" [routerLink]="'./' + i">
+      <img class="page" [src]="page" width="200px" />
+    </a>
+  </div>
+</div>

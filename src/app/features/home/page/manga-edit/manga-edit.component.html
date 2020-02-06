@@ -1,0 +1,40 @@
+<div class="container" *ngIf="manga$ | async as manga">
+  <div class="info">
+    <img class="cover" [src]="manga.coverUrl" width="400px" />
+    <div>
+      <h2 class="title mat-h2">
+        <b>{{ manga.title }}</b>
+      </h2>
+      <h3 class="alt-title mat-h3"></h3>
+
+      <button (click)="delete(manga)">Delete</button>
+
+      <h4 class="uploaded mat-h4"><b>Parodies: </b> <span>tag1 tag2 tag3</span></h4>
+      <h4 class="uploaded mat-h4"><b>Characters: </b> <span>tag1 tag2 tag3</span></h4>
+      <h4 class="uploaded mat-h4"><b>Tags: </b> <span>tag1 tag2 tag3 tag4</span></h4>
+      <h4 class="uploaded mat-h4"><b>Artists: </b> <span>tag1 tag2 tag3</span></h4>
+      <h4 class="uploaded mat-h4"><b>Group: </b> <span>tag1 tag2 tag3</span></h4>
+
+      <h5 class="uploaded mat-h5">
+        Uploaded: <span>{{ manga.createdAt | agoTime }}</span>
+      </h5>
+    </div>
+  </div>
+
+  <div class="pages">
+    <ng-container *ngFor="let page of manga.pageURLs; let i = index">
+      <span *ngIf="page">
+        <button (click)="removePage(manga, page)">x</button>
+
+        <img class="page" [src]="page" width="200px" />
+      </span>
+    </ng-container>
+    <span>
+      <form (submit)="upload(manga, uploadFiles); $event.preventDefault()" [formGroup]="uploadPagesForm">
+        <input #uploadFiles type="file" multiple />
+        <input type="submit" />
+      </form>
+    </span>
+    <mat-progress-spinner *ngIf="spinner" [mode]="spinnerMode" [value]="spinnerProgress"></mat-progress-spinner>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div *ngIf="manga$ | async as manga" class="container">
+  <ng-container *ngIf="page$ | async as page">
+    <div class="wrapper">
+      <!-- Page -->
+      <img class="page" [src]="manga.pageURLs[page[0]]" />
+
+      <!-- Prev link-->
+      <a class="prev" [routerLink]="page[0] > 0 ? '../' + (page[0] - 1) : '../'" [replaceUrl]="page[0] > 0"> </a>
+
+      <!-- Next link-->
+      <a
+        class="next"
+        [routerLink]="page[0] < manga.pageURLs.length - 1 ? '../' + (page[0] + 1) : '../'"
+        [replaceUrl]="page[0] < manga.pageURLs.length - 1"
+      >
+      </a>
+    </div>
+    <div class="controls">
+      <button *ngIf="page[0] > 0" [routerLink]="'../' + (page[0] - 1)" replaceUrl="true" mat-raised-button class="prev">
+        Prev
+      </button>
+
+      <span style="flex: 1;"></span>
+
+      <button
+        *ngIf="page[0] < manga.pageURLs.length - 1"
+        [routerLink]="'../' + (page[0] + 1)"
+        replaceUrl="true"
+        mat-raised-button
+        color="accent"
+        class="next"
+      >
+        Next
+      </button>
+    </div>
+    <div class="home">
+      <a routerLink=".."> Back to gallery </a>
+    </div>
+  </ng-container>
+</div>
