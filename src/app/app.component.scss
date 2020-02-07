@@ -1,6 +1,11 @@
+@import '../styles/breakpoints';
+
 .burger {
   margin-left: -10px;
-  margin-right: 5px;
+  // margin-right: 16px;
+}
+.logo {
+  margin-right: 16px;
 }
 .sidenav-container {
   height: 100%;
@@ -20,14 +25,17 @@
 
 .search {
   width: 100%;
-  max-width: 400px;
+  max-width: 959px;
+
+  @include adx-bp(lg) {
+    width: 300px;
+  }
 }
 
 .link-reset {
   color: inherit;
   text-decoration: none;
 }
-
 
 /*
 .example-container {

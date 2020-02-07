@@ -1,15 +1,33 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div>
-    Username:<br />
-    <input type="username" formControlName="username" placeholder="Enter your username" />
-  </div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+  <mat-card>
+    <mat-progress-bar
+      *ngIf="loading"
+      value="100"
+      [mode]="errorMessage ? 'determinate' : 'indeterminate'"
+      [color]="errorMessage ? 'warn' : 'primary'"
+    ></mat-progress-bar>
+    {{ errorMessage }}
 
-  <div>
-    Password:<br />
-    <input type="password" formControlName="password" placeholder="Enter your password" />
-  </div>
+    <h1>Login</h1>
 
-  <div>
-    <input type="submit" value="Login" />
-  </div>
+    <mat-form-field class="username">
+      <input matInput type="username" placeholder="Username" formControlName="username" />
+      <mat-error *ngIf="username.invalid && username.errors.required">Username is required</mat-error>
+      <mat-error *ngIf="username.invalid && username.errors.minlength">Username to short</mat-error>
+    </mat-form-field>
+    <mat-form-field class="password">
+      <input matInput type="password" placeholder="Password" formControlName="password" />
+      <mat-error *ngIf="password.invalid && password.errors.required">Password is required</mat-error>
+      <mat-error *ngIf="password.invalid && password.errors.minlength">Password to short</mat-error>
+    </mat-form-field>
+
+    <div class="button-group">
+      <a routerLink="/register">Don't have an account?</a>
+
+      <div class="controls">
+        <button mat-button type="reset">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid || loading">Login</button>
+      </div>
+    </div>
+  </mat-card>
 </form>

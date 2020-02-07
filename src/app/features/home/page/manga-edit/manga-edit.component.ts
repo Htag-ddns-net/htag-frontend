@@ -21,7 +21,7 @@ export class MangaEditComponent implements OnInit {
   spinnerMode = 'indeterminate';
   spinnerProgress = 0;
 
-  constructor(private route: ActivatedRoute, private api: MangaService, private fb: FormBuilder, private router: Router) { }
+  constructor(private route: ActivatedRoute, private api: MangaService, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     this.mangaId$ = this.route.params.pipe(
@@ -45,13 +45,15 @@ export class MangaEditComponent implements OnInit {
     manga.pageURLs[index] = null;
 
     this.api.delFile$(manga.id, page.substr(page.lastIndexOf('/') + 1)).subscribe(
-      () => { },
+      () => {},
       () => (manga.pageURLs[index] = val)
     );
   }
 
   upload(manga: IManga, { files }) {
-    if (this.spinner) { return; }
+    if (this.spinner) {
+      return;
+    }
     this.spinner = true;
     this.spinnerMode = 'indeterminate';
 
@@ -63,7 +65,7 @@ export class MangaEditComponent implements OnInit {
               this.spinnerMode = 'indeterminate';
               break;
             }
-            this.spinnerProgress = Math.round(event.loaded / event.total * 100);
+            this.spinnerProgress = Math.round((event.loaded / event.total) * 100);
             this.spinnerMode = 'determinate';
             break;
           case HttpEventType.Response:
@@ -71,7 +73,7 @@ export class MangaEditComponent implements OnInit {
         }
       },
       error => alert(error.message),
-      () => this.spinner = false
+      () => (this.spinner = false)
     );
   }
 

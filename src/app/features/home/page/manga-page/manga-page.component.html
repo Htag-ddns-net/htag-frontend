@@ -2,7 +2,10 @@
   <ng-container *ngIf="page$ | async as page">
     <div class="wrapper">
       <!-- Page -->
-      <img class="page" [src]="manga.pageURLs[page[0]]" />
+      <img class="page" [src]="'/file/' + manga.id + '/' + manga.pageURLs[page[0]]" (load)="loading = false" (loadstart)="loading = true" />
+
+      <!-- Loading bar  -->
+      <mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
 
       <!-- Prev link-->
       <a class="prev" [routerLink]="page[0] > 0 ? '../' + (page[0] - 1) : '../'" [replaceUrl]="page[0] > 0"> </a>

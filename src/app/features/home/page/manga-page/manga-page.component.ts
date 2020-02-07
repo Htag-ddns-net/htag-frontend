@@ -10,6 +10,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./manga-page.component.scss'],
 })
 export class MangaPageComponent implements OnInit {
+  loading = false;
+
+
   mangaId$: Observable<string>;
   manga$: Observable<IManga>;
   page$: Observable<number[]>;

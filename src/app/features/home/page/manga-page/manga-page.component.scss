@@ -57,6 +57,12 @@ $screen-xl-min: 1200px;
   position: relative;
   width: 100%;
 
+  .spinner {
+    position: absolute;
+    top: 20%;
+    left: calc(50% - 100px);
+  }
+
   .next,
   .prev {
     position: absolute;

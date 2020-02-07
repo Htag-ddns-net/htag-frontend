@@ -11,6 +11,7 @@ import { map, distinctUntilChanged, switchMap } from 'rxjs/operators';
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent implements OnInit, OnDestroy {
+  loaded = false;
   mangas: IMangaPrev[] = [];
   sucription: Subscription;
 
@@ -19,6 +20,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sucription = this.api.getFavorites$().subscribe(mangas => {
       this.mangas = mangas;
+      this.loaded = true;
     });
   }
 

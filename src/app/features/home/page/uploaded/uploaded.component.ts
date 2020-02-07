@@ -11,6 +11,7 @@ import { map, distinctUntilChanged, switchMap } from 'rxjs/operators';
   styleUrls: ['./uploaded.component.scss'],
 })
 export class UploadedComponent implements OnInit, OnDestroy {
+  loaded = false;
   mangas: IMangaPrev[] = [];
   sucription: Subscription;
 
@@ -19,6 +20,7 @@ export class UploadedComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sucription = this.api.getCreated$().subscribe(mangas => {
       this.mangas = mangas;
+      this.loaded = true;
     });
   }
 

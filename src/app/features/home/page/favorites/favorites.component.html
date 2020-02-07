@@ -1,10 +1,13 @@
 <div class="content">
-  <div class="manga-list">
+  <div class="manga-list" *ngIf="loaded; else loadingBar">
     <a *ngFor="let manga of mangas" [routerLink]="'/manga/' + manga.id" class="manga">
       <div class="container">
-        <img [src]="manga.coverUrl" />
+        <img [src]="'/thumb/unsafe/300x0/' + manga.id + '/' + manga.coverUrl" />
         <div class="title">{{ manga.title }}</div>
       </div>
     </a>
   </div>
+  <ng-template #loadingBar>
+    <mat-spinner class="spinner"></mat-spinner>
+  </ng-template>
 </div>

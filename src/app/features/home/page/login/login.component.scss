@@ -1,0 +1,29 @@
+.login-form {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+
+  .username,
+  .password,
+  .button-group {
+    display: block;
+  }
+
+  .button-group {
+    position: relative;
+    display: flex;
+    width: 100%;
+    // justify-content: right;
+    margin-top: 20px;
+
+    a {
+      position: absolute;
+      bottom: 5px;
+      color: inherit;
+    }
+    .controls {
+      margin-left: auto;
+    }
+  }
+}

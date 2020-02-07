@@ -1,6 +1,6 @@
 <div class="container" *ngIf="manga$ | async as manga">
   <div class="info">
-    <img class="cover" [src]="manga.coverUrl" width="400px" />
+    <img class="cover" [src]="'/thumb/unsafe/300x0/' + manga.id + '/' + manga.coverUrl" width="400px" />
     <div>
       <h2 class="title mat-h2">
         <b>{{ manga.title }}</b>
@@ -16,7 +16,7 @@
       <ng-container *ngIf="auth.isAuthenticated$ | async">
         Favorite:
         <button mat-icon-button (click)="favorite(manga, !manga.favorite)">
-          <mat-icon>{{ manga.favorite ? 'favorite_border' : 'favorite' }}</mat-icon>
+          <mat-icon>{{ manga.favorite ? 'favorite' : 'favorite_border' }}</mat-icon>
         </button>
       </ng-container>
 
@@ -36,7 +36,7 @@
 
   <div class="pages">
     <a *ngFor="let page of manga.pageURLs; let i = index" [routerLink]="'./' + i">
-      <img class="page" [src]="page" width="200px" />
+      <img class="page" [src]="'/thumb/unsafe/300x0/' + manga.id + '/' + page" width="200px" />
     </a>
   </div>
 </div>

@@ -49,7 +49,7 @@ export class AuthService {
    */
   isAuthenticated$ = this.profile$.pipe(map(profile => profile !== null));
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   /**
    * This function MUST be run once at the start of the aplication. Preferably in AppComponent.
@@ -110,13 +110,16 @@ export class AuthService {
    * Logs out the current user
    */
   logout$() {
+    const oldData = this.profileSubject$.value;
+    if (!oldData) { return; }
+
+    this.profileSubject$.next(null);
     return this.http.post<IUser>(`${this.baseURL}/logout`, null).pipe(
       tap(
-        () => this.profileSubject$.next(null),
+        () => { },
         err => {
-          if (err && err.status === 401) {
-            this.profileSubject$.next(null);
-          }
+          if (err && err.status === 401) { return; }
+          this.profileSubject$.next(oldData);
         }
       )
     );

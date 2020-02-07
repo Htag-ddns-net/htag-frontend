@@ -1,13 +1,13 @@
 <div class="container" *ngIf="manga$ | async as manga">
   <div class="info">
-    <img class="cover" [src]="manga.coverUrl" width="400px" />
-    <div>
+    <img class="cover" [src]="'/thumb/unsafe/300x0/' + manga.id + '/' + manga.coverUrl" width="400px" />
+    <div class="sidebar">
       <h2 class="title mat-h2">
         <b>{{ manga.title }}</b>
       </h2>
       <h3 class="alt-title mat-h3"></h3>
 
-      <button (click)="delete(manga)">Delete</button>
+      <button class="manga-del" mat-icon-button (click)="delete(manga)"><mat-icon>delete</mat-icon></button>
 
       <h4 class="uploaded mat-h4"><b>Parodies: </b> <span>tag1 tag2 tag3</span></h4>
       <h4 class="uploaded mat-h4"><b>Characters: </b> <span>tag1 tag2 tag3</span></h4>
@@ -23,12 +23,13 @@
 
   <div class="pages">
     <ng-container *ngFor="let page of manga.pageURLs; let i = index">
-      <span *ngIf="page">
-        <button (click)="removePage(manga, page)">x</button>
+      <span *ngIf="page" class="page-wrapper">
+        <button class="del" mat-icon-button (click)="removePage(manga, page)" color="primary"><mat-icon>delete</mat-icon></button>
 
-        <img class="page" [src]="page" width="200px" />
+        <img class="page" [src]="'/thumb/unsafe/300x0/' + manga.id + '/' + page" width="200px" />
       </span>
     </ng-container>
+
     <span>
       <form (submit)="upload(manga, uploadFiles); $event.preventDefault()" [formGroup]="uploadPagesForm">
         <input #uploadFiles type="file" multiple />

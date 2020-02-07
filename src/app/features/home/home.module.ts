@@ -12,7 +12,7 @@ import { ProfileComponent } from './page/profile/profile.component';
 import { UploadComponent } from './page/upload/upload.component';
 import { FavoritesComponent } from './page/favorites/favorites.component';
 import { MangaEditComponent } from './page/manga-edit/manga-edit.component';
-import { MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatProgressBarModule, MatCardModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploadedComponent } from './page/uploaded/uploaded.component';
 import { AboutComponent } from './page/about/about.component';
@@ -50,7 +50,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatFormFieldModule,
     MatInputModule,
 
-    MatProgressSpinnerModule
+    MatCardModule,
+
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
 })
-export class HomeModule {}
+export class HomeModule { }

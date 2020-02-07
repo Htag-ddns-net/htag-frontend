@@ -8,7 +8,13 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar class="navbar"><a routerLink="/" class="link-reset">Htag</a></mat-toolbar>
+    <mat-toolbar class="navbar">
+      <button class="burger" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.close()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <a routerLink="/" class="link-reset logo">Htag</a>
+    </mat-toolbar>
 
     <!-- Navigation -->
     <mat-nav-list>
@@ -42,9 +48,13 @@
   <mat-sidenav-content>
     <mat-toolbar>
       <!-- Burger button -->
-      <button class="burger" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+      <ng-container *ngIf="isHandset$ | async">
+        <button class="burger" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.open()" *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+
+        <a routerLink="/" class="logo link-reset">Htag</a>
+      </ng-container>
 
       <!-- Fill remaining -->
       <span style="flex: 1"></span>

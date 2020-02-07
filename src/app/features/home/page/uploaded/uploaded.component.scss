@@ -6,6 +6,11 @@
   margin: auto;
 }
 
+.spinner {
+  margin: auto;
+}
+
+
 .manga-list {
   box-sizing: border-box;
   width: 100%;
@@ -48,11 +53,14 @@
       box-sizing: border-box;
 
       height: 100%;
-      padding-bottom: 20px;
+
+      $text-height: 20px;
+      padding-bottom: calc(142% + #{$text-height});
 
       img {
+        position: absolute;
         width: 100%;
-        height: 100%;
+        height: calc(100% - #{$text-height});
         object-fit: cover;
       }
 

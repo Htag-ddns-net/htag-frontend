@@ -20,17 +20,17 @@ export class AppComponent implements OnInit, OnDestroy {
     shareReplay()
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, public auth: AuthService, private router: Router) { }
+  constructor(private breakpointObserver: BreakpointObserver, public auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.auth.initAuth();
 
-    combineLatest(this.isHandset$, this.router.events).pipe(
-      filter(([v, o]) => v),
-      takeUntil(this.onDestroy$)
-    ).subscribe(
-      () => this.drawer.close()
-    );
+    combineLatest([this.isHandset$, this.router.events])
+      .pipe(
+        filter(([v, o]) => v),
+        takeUntil(this.onDestroy$)
+      )
+      .subscribe(() => this.drawer.close());
   }
 
   ngOnDestroy() {

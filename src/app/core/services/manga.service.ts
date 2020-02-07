@@ -26,8 +26,8 @@ export interface IMangaPrev {
 
 const mapPageURls = (manga: IManga) => ({
   ...manga,
-  pageURLs: manga.pageURLs.map(page => '/file/' + manga.id + '/' + page),
-  coverUrl: '/file/' + manga.id + '/' + manga.pageURLs[0],
+  // pageURLs: // manga.pageURLs.map(page => '/file/' + manga.id + '/' + page),
+  coverUrl: manga.pageURLs[0] // '/thumb/unsafe/300x0/' + manga.id + '/' + manga.pageURLs[0],
 });
 
 @Injectable({
@@ -62,10 +62,12 @@ export class MangaService {
     for (let i = 0; i < files.length; i++) {
       formData.append('file', files[i]);
     }
-    return this.http.post<IManga>(`${this.baseURL}/${id}/upload`, formData, {
-      reportProgress: true,
-      observe: 'events'
-    }).pipe(map((event) => (event.type === HttpEventType.Response) ? { ...event, body: mapPageURls(event.body) } : event));
+    return this.http
+      .post<IManga>(`${this.baseURL}/${id}/upload`, formData, {
+        reportProgress: true,
+        observe: 'events',
+      })
+      .pipe(map(event => (event.type === HttpEventType.Response ? { ...event, body: mapPageURls(event.body) } : event)));
   }
   updateManga$(id: ID, manga: Partial<Omit<IManga, 'id'>>): Observable<IManga> {
     return this.http.post<IManga>(`${this.baseURL}/${id}`, manga).pipe(map(mapPageURls));
